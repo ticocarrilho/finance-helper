@@ -9,18 +9,12 @@ beforeEach(async () => {
 
 describe('GET /api/user', () => {
   it('should be able to get all users', async () => {
-    const names = ['user1', 'user2', 'user3'];
-
-    await Promise.all(names.map(async (name) => {
-      await factory.create('User', {
-        name
-      });
-    }));
+    await factory.createMany('User', 5);
 
     const response = await request(app)
       .get('/api/user');
 
-    expect(response.body).toHaveLength(names.length);
+    expect(response.body).toHaveLength(5);
   });
 
   it('should be able to get an user', async () => {

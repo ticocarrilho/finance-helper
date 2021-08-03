@@ -40,8 +40,8 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: ${{ matrix.node-version }}
-    - run: npm ci
-    - run: npm test
+    - run: yarn --frozen-lockfile
+    - run: yarn test
     env:
           DB_HOST_TEST: localhost
           DB_USER_TEST: postgres
